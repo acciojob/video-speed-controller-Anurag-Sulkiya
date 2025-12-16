@@ -77,5 +77,5 @@ function handleSpeedUpdate() {
 	speedDisplay.textContent = parseFloat(this.value).toFixed(1) + 'x';
 }
 
-speedInput.addEventListner('input',  handleSpeedUpdate);
+speedInput.addEventListener('input',  handleSpeedUpdate);
 speedDisplay.textContent = '1.0x';
