@@ -24,14 +24,14 @@ function scrub(e){
 	video.currentTime = scrubTime;
 }
 
-progress.addEventListner('click', scrub);
+progress.addEventListener('click', scrub);
 
 let mousedown = false;
-progress.addEventListner('mousemove', (e)=> mousedown && scrub(e));
-progress.addEventListner('mousedown', (e)=> mousedown = true);
-progress.addEventListner('mouseup', (e)=> mousedown = false);
+progress.addEventListener('mousemove', (e)=> mousedown && scrub(e));
+progress.addEventListener('mousedown', (e)=> mousedown = true);
+progress.addEventListener('mouseup', (e)=> mousedown = false);
 
-const toggle = document.querySeletor('.player__button.toggle');
+const toggle = document.querySelector('.player__button.toggle');
 
 function togglePlay(){
   if(video.paused){
@@ -47,23 +47,23 @@ function updateButton(){
     toggle.textContent = icon;
 }
 
-toggle.addEventListner('click', togglePlay);
-video.addEventListner('play', updateButton);
-video.addEventListner('pause', updateButton);
-video.addEventListner('click', togglePlay);
+toggle.addEventListener('click', togglePlay);
+video.addEventListener('play', updateButton);
+video.addEventListener('pause', updateButton);
+video.addEventListener('click', togglePlay);
 
 const skipButtons = document.querySelectorAll('[data-skip]');
 function skip() {
 	video.currentTime += parseFloat(this.dataset.skip);
 }
-skipButtons.forEach(button => button.addEventListner('click',skip));
+skipButtons.forEach(button => button.addEventListener('click',skip));
 
 const volumeInput = document.querySelector('.volume');
 const volumeDisplay = document.querySelector('.volume-display');
 
 function handleVolumeUpdate(){
 	video.volume = this.value;
-	volumeDisplay.textContent = Math.round(this.value * 100) + %;
+	volumeDisplay.textContent = Math.round(this.value * 100) + "%";
 }
 
 volumeInput.addEventListener('input', handleVolumeUpdate);
